@@ -1,10 +1,6 @@
 #ifndef _MSER_H_
 #define _MSER_H_
-
-
 #include "headline.h"
-
-
 class Mser{
 public:
 	//截取图块
