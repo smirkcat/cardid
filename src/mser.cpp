@@ -48,7 +48,7 @@ cv::Mat Mser::detectNumber(Mat &src){
 
 		//step4: number cut  
 		//ostringstream oss;
-		//Mat test1 = src.clone();
+		
 		//Mat plot;
 		//plot.create(src.size(), CV_8UC1);
 		//plot = Scalar::all(255);
@@ -56,6 +56,7 @@ cv::Mat Mser::detectNumber(Mat &src){
 		//time = clock();
 		int max_width = 40, idx = 0;
 		int cgtssize = cgts.size();
+		//Mat test1 = src.clone();
 		if (cgtssize>0){
 			//RotatedRect re;
 			Rect r;
@@ -77,20 +78,16 @@ cv::Mat Mser::detectNumber(Mat &src){
 			//取得截取的图块区域
 			secureRect(r,src);
 			image_roi = src(r);
-
 			//imwrite("12341.jpg", image_roi);
 			showWindowImg("number region", image_roi);
 			
 			//根据获得的角度旋转
-			Mat dsrc = dealCorrect.deskew(image_roi, cgts[idx]);
+			image_roi = dealCorrect.deskew(image_roi, cgts[idx]);
 			//imwrite("1231.jpg", dsrc);
-			showWindowImg("deskew_image_roi", dsrc);
+			showWindowImg("deskew_image_roi", image_roi);
 
 			image_roi = Filter(image_roi);//二值化图像
 			showWindowImg("binary_image_roi", image_roi);
-
-			Mat df = dealCorrect.deskew(image_roi, cgts[idx]);
-			showWindowImg("deskew_binary_image_roi", df);
 		}
 	} 
 	return image_roi;

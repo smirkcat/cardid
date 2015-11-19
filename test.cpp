@@ -1,12 +1,9 @@
 #include "mser.h"
-#include <opencv2/opencv.hpp>
-#include <iostream>
-using namespace cv;
-using namespace std;
+#include "headline.h"
 
 int main(int argc, char * argv[]){
 	//Mat img = imread(argv[1], 1); //linux²âÊÔµ÷ÓÃ
-	Mat img = imread("..//3.jpg");
+	Mat img = imread("..//ceshi.png");
 	if (!img.data){
 		cout << "File not found" << endl;
 		return -1;

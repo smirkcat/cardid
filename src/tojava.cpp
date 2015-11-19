@@ -11,9 +11,8 @@ JNIEXPORT jbyteArray JNICALL Java_com_ocr_jni_Mser_detectIdNum
 	{
 		return NULL;
 	}
-	Mser fun;
 	vector<uchar> outputdata;
-
+	Mser fun;
 	Mat src = imdecode(Mat(1, size, CV_8U, imagebuffer), IMREAD_COLOR);
 	Mat dst = fun.detectNumber(src);
 
