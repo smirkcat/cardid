@@ -48,7 +48,7 @@ cv::Mat Mser::detectNumber(Mat &src){
 
 		//step4: number cut  
 		//ostringstream oss;
-		Mat test1 = src.clone();
+		//Mat test1 = src.clone();
 		//Mat plot;
 		//plot.create(src.size(), CV_8UC1);
 		//plot = Scalar::all(255);
@@ -64,11 +64,11 @@ cv::Mat Mser::detectNumber(Mat &src){
 				if (r.width > max_width){
 					max_width = r.width;
 						idx = i;
-					secureRect(r, src);
-					rectangle( test1, r, CV_RGB(0, 255, 0), 5, 8, 0 );
+					//secureRect(r, src);
+					//rectangle( test1, r, CV_RGB(0, 255, 0), 5, 8, 0 );
 				}
 			}
-			showWindowImg("linkCandidate", test1);
+			//showWindowImg("linkCandidate", test1);
 
 			r = cgts[idx].boundingRect();
 			//float iiii = cgts[idx].angle;
@@ -78,12 +78,12 @@ cv::Mat Mser::detectNumber(Mat &src){
 			secureRect(r,src);
 			image_roi = src(r);
 
-			imwrite("12341.jpg", image_roi);
+			//imwrite("12341.jpg", image_roi);
 			showWindowImg("number region", image_roi);
 			
 			//根据获得的角度旋转
 			Mat dsrc = dealCorrect.deskew(image_roi, cgts[idx]);
-			imwrite("1231.jpg", dsrc);
+			//imwrite("1231.jpg", dsrc);
 			showWindowImg("deskew_image_roi", dsrc);
 
 			image_roi = Filter(image_roi);//二值化图像
