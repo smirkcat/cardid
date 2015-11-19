@@ -9,6 +9,7 @@ set( NAME_SRC
 	src/LinkCandidate.cpp
 	src/LinkCandidateUtil.cpp
 	src/DealCorrect.cpp
+	src/tojava.cpp
 	test.cpp
 )
 
@@ -22,6 +23,7 @@ set( NAME_HEADERS
 	 include/LinkCandidateUtil.h
 	 include/DealCorrect.h
 	 include/mser.h
+	 include/tojava.h
 )
 
 INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR}/include )

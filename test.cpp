@@ -2,8 +2,9 @@
 #include "headline.h"
 
 int main(int argc, char * argv[]){
-	//Mat img = imread(argv[1], 1); //linux测试调用
+	//Mat img = imread(argv[1], 1); //通过参数传入测试调用
 	Mat img = imread("..//ceshi.png");
+	//Mat img = imread("..//3.jpg");
 	if (!img.data){
 		cout << "File not found" << endl;
 		return -1;

@@ -79,15 +79,16 @@ cv::Mat Mser::detectNumber(Mat &src){
 			secureRect(r,src);
 			image_roi = src(r);
 			//imwrite("12341.jpg", image_roi);
-			showWindowImg("number region", image_roi);
-			
+			//showWindowImg("number region", image_roi);
+			//二值化图像
+			image_roi = Filter(image_roi);
+			//showWindowImg("binary_image_roi", image_roi);
 			//根据获得的角度旋转
 			image_roi = dealCorrect.deskew(image_roi, cgts[idx]);
 			//imwrite("1231.jpg", dsrc);
-			showWindowImg("deskew_image_roi", image_roi);
-
-			image_roi = Filter(image_roi);//二值化图像
-			showWindowImg("binary_image_roi", image_roi);
+			//showWindowImg("deskew_image_roi", image_roi);
+			
+			
 		}
 	} 
 	return image_roi;
@@ -123,11 +124,11 @@ cv::Mat Mser::Filter(cv::Mat &src)
 	cv::Mat binarization;
 	//Mat temp;
 
-	int blockSize = src.rows;
-	//取奇数，位运算
-	blockSize = blockSize | 1;
-
-	adaptiveThreshold(src, binarization, 255, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY, blockSize, h*0.5);
+	//int blockSize = src.rows;
+	////取奇数，位运算
+	//blockSize = blockSize | 1;
+	//此处二值化经过测试不太好，参数控制改为定死，感觉效果挺好，模糊的效果也二值化也比较好
+	adaptiveThreshold(src, binarization, 255, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY, 11, 9);
 
 //	threshold(src,binarization,100,255,CV_THRESH_BINARY | CV_THRESH_OTSU);
 	return binarization;
