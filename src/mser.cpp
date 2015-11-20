@@ -79,14 +79,14 @@ cv::Mat Mser::detectNumber(Mat &src){
 			secureRect(r,src);
 			image_roi = src(r);
 			//imwrite("12341.jpg", image_roi);
-			//showWindowImg("number region", image_roi);
+			showWindowImg("number region", image_roi);
 			//二值化图像
 			image_roi = Filter(image_roi);
-			//showWindowImg("binary_image_roi", image_roi);
+			showWindowImg("binary_image_roi", image_roi);
 			//根据获得的角度旋转
 			image_roi = dealCorrect.deskew(image_roi, cgts[idx]);
 			//imwrite("1231.jpg", dsrc);
-			//showWindowImg("deskew_image_roi", image_roi);
+			showWindowImg("deskew_image_roi", image_roi);
 			
 			
 		}

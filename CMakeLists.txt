@@ -27,8 +27,10 @@ set( NAME_HEADERS
 )
 
 INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR}/include )
+INCLUDE_DIRECTORIES(${JAVA_HOME}/include)
+INCLUDE_DIRECTORIES(${JAVA_HOME}/include/linux)
 link_directories( ${CMAKE_BINARY_DIR})
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
-add_executable( mser ${NAME_SRC} ${NAME_HEADERS} )
+ADD_LIBRARY( mser MODULE ${NAME_SRC} ${NAME_HEADERS} )
 
 target_link_libraries( mser lept tesseract ${OpenCV_LIBS} )
