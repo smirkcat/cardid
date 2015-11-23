@@ -27,10 +27,12 @@ set( NAME_HEADERS
 )
 
 INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR}/include )
-INCLUDE_DIRECTORIES(${JAVA_HOME}/include)
-INCLUDE_DIRECTORIES(${JAVA_HOME}/include/linux)
+#用$ENV{JAVA_HOME}  获取
+INCLUDE_DIRECTORIES($ENV{JAVA_HOME}/include)
+INCLUDE_DIRECTORIES($ENV{JAVA_HOME}/include/linux)
 link_directories( ${CMAKE_BINARY_DIR})
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+#MODULE 动态库生成
 ADD_LIBRARY( mser MODULE ${NAME_SRC} ${NAME_HEADERS} )
 
-target_link_libraries( mser lept tesseract ${OpenCV_LIBS} )
+target_link_libraries( mser ${OpenCV_LIBS} )
