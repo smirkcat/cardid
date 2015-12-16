@@ -42,9 +42,6 @@
     <ClInclude Include="include\mser.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\tojava.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DealCorrect.cpp">
@@ -66,12 +63,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\swtUtil.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="test.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tojava.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

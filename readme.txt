@@ -11,11 +11,11 @@
 工程vs2013 依赖opencv和jni头文件 自己修改配置文件opencv2411和jnijava64,或者手动修改
 ，请别删除，删除后工程打不开
 
-cmakelist为linux下编译命令 编码都是utf-8，请用对应格式打开
+cmakelist为linux下编译命令
 
 请用
 下面命令（推荐）
-mkdir release
-cd release
-cmake ..
+mkdir linux
+cd linux
+cmake ../
 make

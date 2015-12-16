@@ -29,13 +29,13 @@ cv::Mat Mser::detectNumber(Mat &src){
 	//cout << "GetCandidate候选区选择消耗时间:" << float(time) * 1000 / CLOCKS_PER_SEC <<"毫秒"<< endl;
 	if( candidateStore.size() > 0 ) {
 
-		////show the candidateStore
+		//show the candidateStore
 		//Mat test0 = src.clone();
 		//for(int i = 0; i < candidateStore.size(); i++){
 		//	Candidate c = candidateStore[i];
 		//	Point tl = Point(c.min_j, c.min_i);
 		//	Point br = Point(c.max_j, c.max_i);
-		//	//rectangle(test0, tl, br, CV_RGB(0, 0, 255), 3, 8, 0);
+		//	rectangle(test0, tl, br, CV_RGB(0, 0, 255), 3, 8, 0);
 		//}
 		//showWindowImg("GetCandidate", test0);
 		//step3: link candidates
@@ -79,14 +79,14 @@ cv::Mat Mser::detectNumber(Mat &src){
 			secureRect(r,src);
 			image_roi = src(r);
 			//imwrite("12341.jpg", image_roi);
-			showWindowImg("number region", image_roi);
+			//showWindowImg("number region", image_roi);
 			//二值化图像
 			image_roi = Filter(image_roi);
-			showWindowImg("binary_image_roi", image_roi);
+			//showWindowImg("binary_image_roi", image_roi);
 			//根据获得的角度旋转
 			image_roi = dealCorrect.deskew(image_roi, cgts[idx]);
 			//imwrite("1231.jpg", dsrc);
-			showWindowImg("deskew_image_roi", image_roi);
+			//showWindowImg("deskew_image_roi", image_roi);
 			
 			
 		}
@@ -128,7 +128,7 @@ cv::Mat Mser::Filter(cv::Mat &src)
 	////取奇数，位运算
 	//blockSize = blockSize | 1;
 	//此处二值化经过测试不太好，参数控制改为定死，感觉效果挺好，模糊的效果也二值化也比较好
-	adaptiveThreshold(src, binarization, 255, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY, 11, 9);
+	adaptiveThreshold(src, binarization, 255, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY, 39, 21);
 
 //	threshold(src,binarization,100,255,CV_THRESH_BINARY | CV_THRESH_OTSU);
 	return binarization;
