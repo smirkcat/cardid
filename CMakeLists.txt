@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 2.8)
-PROJECT (mser)
+
+PROJECT (cardid)
+
 find_package(OpenCV REQUIRED)
+
 set(OBJ_CARDID
     src/mser.cpp
 	src/swt.cpp
@@ -15,7 +18,12 @@ set(OBJ_JAVA
 	src/tojava.cpp
 )
 
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include )
+set(OBJ_TEST
+	test/test.cpp
+)
+
+#公共头文件
+INCLUDE_DIRECTORIES(include)
 
 #用$ENV{JAVA_HOME}获取 用于加载jni头文件
 INCLUDE_DIRECTORIES($ENV{JAVA_HOME}/include)
@@ -23,6 +31,10 @@ if(WIN32)
 	INCLUDE_DIRECTORIES($ENV{JAVA_HOME}/include/win32)
 ELSE(WIN32) 
 	INCLUDE_DIRECTORIES($ENV{JAVA_HOME}/include/linux)
+	#设置位置无关码
+	set(GNU_FLAGS "-fPIC")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GNU_FLAGS}")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${GNU_FLAGS}")
 endif(WIN32)
 
 
@@ -36,7 +48,6 @@ target_link_libraries(cardid ${OpenCV_LIBS} )
 add_library(Mser SHARED ${OBJ_JAVA})
 target_link_libraries(Mser cardid ${OpenCV_LIBS})
 
-#设置位置无关码
-set(GNU_FLAGS "-fPIC")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GNU_FLAGS}")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${GNU_FLAGS}")
+# test测试执行文件
+#add_executable(test ${OBJ_TEST})
+#target_link_libraries(test cardid ${OpenCV_LIBS})
