@@ -12,8 +12,9 @@ extern "C" {
  * Method:    detectIdNum
  * Signature: ([B)[B
  */
-JNIEXPORT jbyteArray JNICALL Java_com_ocr_jni_Mser_detectIdNum
-  (JNIEnv *, jobject, jbyteArray);
+//JNIEXPORT jbyteArray JNICALL Java_com_ocr_jni_Mser_detectIdNum
+JNIEXPORT jbyteArray JNICALL Java_org_smirkcat_plateocr_Mser_detectIdNum
+	(JNIEnv *, jobject, jbyteArray);
 
 #ifdef __cplusplus
 }
