@@ -1,5 +1,3 @@
-修改者 [@秀才遇到猫](http://weibo.com/smirklijie)
-
 ### 修改说明
 1.修改原来无用队列冗余的存储变量，以及无用边缘信息，也修改了自适应二值化的参数设置;
 2.原来是用Rect的boundingRect链接，现在使用RotateRect的minAreaRect链接，因为保存有angel旋转角度，可以用来倾斜校正，最基础的Candidate块没有改变。
